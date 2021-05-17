@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'logstash-integration-jdbc'
-  s.version         = '5.0.7'
+  s.version         = '5.0.7p'
   s.licenses = ['Apache License (2.0)']
   s.summary         = "Integration with JDBC - input and filter plugins"
   s.description     = "This gem is a Logstash plugin required to be installed on top of the Logstash core pipeline using $LS_HOME/bin/logstash-plugin install gemname. This gem is not a stand-alone program"
@@ -27,10 +27,13 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency "logstash-core-plugin-api", ">= 1.60", "<= 2.99"
   # Restrict use of this plugin to versions of Logstash where support for integration plugins is present.
-  s.add_runtime_dependency "logstash-core", ">= 6.5.0"
+  s.add_runtime_dependency "logstash-core"
   s.add_runtime_dependency 'logstash-codec-plain'
   s.add_runtime_dependency 'sequel'
   s.add_runtime_dependency 'lru_redux' # lru cache with ttl
+
+  # Fix TZ Ambiguous issue
+  s.add_runtime_dependency 'activesupport'
 
   s.add_runtime_dependency 'tzinfo'
   s.add_runtime_dependency 'tzinfo-data'
